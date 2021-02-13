@@ -21,9 +21,9 @@ class MapViewController: UIViewController {
         return view
     }()
     
-    private let loadingView: UIView = {
-        let view = UIView()
-        view.isHidden = true
+    private let loadingView: SpinnerView = {
+        let view = SpinnerView()
+        view.isHidden = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,9 +37,9 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupViewHierarchy()
         setupConstraints()
-        
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
             self?.map = map
+            self?.loadingView.isHidden = true
             print(map.feeds)
         })
     }
