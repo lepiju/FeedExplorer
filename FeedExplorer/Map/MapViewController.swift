@@ -39,6 +39,9 @@ class MapViewController: UIViewController {
         setupConstraints()
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
             self?.map = map
+            for feed in map.feeds {
+//                mapView.addAnnotation(feed)
+            }
             self?.loadingView.isHidden = true
             print(map.feeds)
         })

@@ -18,6 +18,8 @@ class SpinnerView: UIView {
         return view
     }()
     
+    // Mark: Inits
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewHierarchy()
