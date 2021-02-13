@@ -8,5 +8,5 @@
 import Foundation
 
 struct Map: Codable {
-    var feeds: Array<Feed> { get set }
+    var feeds: Array<Feed>
 }
