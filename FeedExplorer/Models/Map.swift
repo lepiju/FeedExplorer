@@ -8,5 +8,8 @@
 import Foundation
 
 struct Map: Codable {
-    var feeds: Array<Feed>
+    let feeds: Array<Feed>
+    
+    enum CodingKeys: String, CodingKey {
+        case feeds    }
 }

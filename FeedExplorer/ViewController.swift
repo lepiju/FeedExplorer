@@ -19,10 +19,6 @@ class ViewController: UIViewController {
             self?.map = map
             print(map.feeds)
         })
-        
-        
     }
-    
-    
 }
 

@@ -26,7 +26,7 @@ class NetworkManager {
                 print("Error with the response, unexpected status code: \(String(describing: response))")
                 return
             }
-            
+
             if let data = data,
                let map = try? JSONDecoder().decode(Map.self, from: data) {
                 completionHandler(map.self)
