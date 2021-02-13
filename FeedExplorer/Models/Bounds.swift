@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//"bounds":{"min_lat":45.3081,"max_lat":45.7916,"min_lon":-74.0894,"max_lon":-73.3465}
+
 struct Bounds: Codable {
     var minLat: Double
     var maxLat: Double

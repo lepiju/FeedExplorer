@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Map: Codable {
+struct Map: Decodable {
     let feeds: Array<Feed>
 }

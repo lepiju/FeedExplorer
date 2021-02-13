@@ -31,6 +31,8 @@ class MapViewController: UIViewController {
     // MARK: Properties
     
     private var map: Map?
+    private let montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +42,19 @@ class MapViewController: UIViewController {
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
             self?.map = map
             for feed in map.feeds {
-//                mapView.addAnnotation(feed)
+                self?.mapView.addAnnotation(feed)
             }
             self?.loadingView.isHidden = true
-            print(map.feeds)
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let coordinateRegion = MKCoordinateRegion(
+            center: montrealLocation.coordinate,
+            latitudinalMeters: 50000,
+            longitudinalMeters: 50000)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     private func setupViewHierarchy() {
