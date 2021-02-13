@@ -9,7 +9,4 @@ import Foundation
 
 struct Map: Codable {
     let feeds: Array<Feed>
-    
-    enum CodingKeys: String, CodingKey {
-        case feeds    }
 }
