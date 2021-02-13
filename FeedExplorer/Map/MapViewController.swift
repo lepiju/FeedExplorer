@@ -32,11 +32,9 @@ class MapViewController: UIViewController {
     
     private var map: Map?
     private let montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupViewHierarchy()
         setupConstraints()
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
@@ -46,6 +44,7 @@ class MapViewController: UIViewController {
             }
             self?.loadingView.isHidden = true
         })
+        mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +79,33 @@ class MapViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(constraints)
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(
+        _ mapView: MKMapView,
+        viewFor annotation: MKAnnotation
+    ) -> MKAnnotationView? {
+        guard let annotation = annotation as? Feed else {
+            return nil
+        }
+        let identifier = "feed"
+        var view: MKMarkerAnnotationView
+        // 4
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(
+            withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(
+                annotation: annotation,
+                reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
     }
 }
 
