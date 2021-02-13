@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     // MARK: Views
     
@@ -37,7 +37,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupViewHierarchy()
         setupConstraints()
-        
         
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
             self?.map = map
