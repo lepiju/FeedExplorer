@@ -25,6 +25,8 @@ class Feed: NSObject, MKAnnotation, Decodable{
             return UIColor.CountryColor.France
         case "UK":
             return UIColor.CountryColor.UnitedKingdom
+        case "GB":
+            return UIColor.CountryColor.UnitedKingdom
         case "DE":
             return UIColor.CountryColor.Germany
         default:
