@@ -44,7 +44,10 @@ class MapViewController: UIViewController {
             }
             self?.loadingView.isHidden = true
         })
-        mapView.delegate = self
+        mapView.register(
+            MarkerView.self,
+            forAnnotationViewWithReuseIdentifier:
+                MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,34 +82,6 @@ class MapViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(constraints)
-    }
-}
-
-extension MapViewController: MKMapViewDelegate {
-    func mapView(
-        _ mapView: MKMapView,
-        viewFor annotation: MKAnnotation
-    ) -> MKAnnotationView? {
-        guard let annotation = annotation as? Feed else {
-            return nil
-        }
-        let identifier = "feed"
-        var view: MKMarkerAnnotationView
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(
-            withIdentifier: identifier) as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            view = MKMarkerAnnotationView(
-                annotation: annotation,
-                reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.image = UIImage(named: "pin")
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.markerTintColor = annotation.pinColor
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        }
-        return view
     }
 }
 

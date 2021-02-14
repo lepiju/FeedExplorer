@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C03F915425D8966400279068 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F915325D8966400279068 /* MarkerView.swift */; };
 		C07E8DC925D82EEC0042CBD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E8DC825D82EEC0042CBD0 /* AppDelegate.swift */; };
 		C07E8DCB25D82EEC0042CBD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E8DCA25D82EEC0042CBD0 /* SceneDelegate.swift */; };
 		C07E8DCD25D82EEC0042CBD0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E8DCC25D82EEC0042CBD0 /* MapViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C03F915325D8966400279068 /* MarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
 		C07E8DC525D82EEC0042CBD0 /* FeedExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07E8DC825D82EEC0042CBD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07E8DCA25D82EEC0042CBD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C0EFCEAD25D85D2D00AFE9AB /* SpinnerView.swift */,
+				C03F915325D8966400279068 /* MarkerView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				C0EFCEAE25D85D2D00AFE9AB /* SpinnerView.swift in Sources */,
 				C0EFCEBB25D8847100AFE9AB /* CountryColor.swift in Sources */,
 				C0EFCEA425D841FF00AFE9AB /* NetworkManager.swift in Sources */,
+				C03F915425D8966400279068 /* MarkerView.swift in Sources */,
 				C0EFCE9625D833EC00AFE9AB /* Map.swift in Sources */,
 				C07E8DCB25D82EEC0042CBD0 /* SceneDelegate.swift in Sources */,
 			);
