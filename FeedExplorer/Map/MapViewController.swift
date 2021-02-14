@@ -14,6 +14,11 @@ class MapViewController: UIViewController {
     
     private let mapView: MKMapView = {
         let view = MKMapView()
+        let coordinateRegion = MKCoordinateRegion(
+            center: montrealLocation.coordinate,
+            latitudinalMeters: 50000,
+            longitudinalMeters: 50000)
+        view.setRegion(coordinateRegion, animated: true)
         view.mapType = MKMapType.standard
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -27,10 +32,11 @@ class MapViewController: UIViewController {
     
     // MARK: Properties
     
-    private let montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
+    private static var montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startLoading()
         setupViewHierarchy()
         setupConstraints()
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
@@ -41,20 +47,7 @@ class MapViewController: UIViewController {
                 self?.endLoading()
             }
         })
-        mapView.register(
-            MarkerView.self,
-            forAnnotationViewWithReuseIdentifier:
-                MKMapViewDefaultAnnotationViewReuseIdentifier)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startLoading()
-        let coordinateRegion = MKCoordinateRegion(
-            center: montrealLocation.coordinate,
-            latitudinalMeters: 50000,
-            longitudinalMeters: 50000)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.register(MarkerView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
     private func setupViewHierarchy() {
