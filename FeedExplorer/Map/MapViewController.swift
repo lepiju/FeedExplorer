@@ -15,22 +15,18 @@ class MapViewController: UIViewController {
     private let mapView: MKMapView = {
         let view = MKMapView()
         view.mapType = MKMapType.standard
-        view.isZoomEnabled = true
-        view.isScrollEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let loadingView: SpinnerView = {
         let view = SpinnerView()
-        view.isHidden = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: Properties
     
-    private var map: Map?
     private let montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
     
     override func viewDidLoad() {
@@ -38,11 +34,12 @@ class MapViewController: UIViewController {
         setupViewHierarchy()
         setupConstraints()
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
-            self?.map = map
             for feed in map.feeds {
                 self?.mapView.addAnnotation(feed)
             }
-            self?.loadingView.isHidden = true
+            DispatchQueue.main.async {
+                self?.endLoading()
+            }
         })
         mapView.register(
             MarkerView.self,
@@ -52,6 +49,7 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        startLoading()
         let coordinateRegion = MKCoordinateRegion(
             center: montrealLocation.coordinate,
             latitudinalMeters: 50000,
@@ -75,13 +73,29 @@ class MapViewController: UIViewController {
         ]
         
         constraints += [
-            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
-            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: mapView.topAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: mapView.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
         ]
         
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private func startLoading() {
+        loadingView.isHidden = false
+        mapView.isScrollEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.isUserInteractionEnabled = false
+    }
+    
+    private func endLoading() {
+        loadingView.isHidden = true
+        mapView.isScrollEnabled = true
+        mapView.isZoomEnabled = true
+        mapView.isUserInteractionEnabled = true
+    }
 }
+
+
 
