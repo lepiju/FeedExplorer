@@ -9,7 +9,7 @@ import UIKit
 
 class SpinnerView: UIView {
     
-    // Mark: Views
+    // MARK: Views
     
     private let spinner: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
@@ -18,7 +18,7 @@ class SpinnerView: UIView {
         return view
     }()
     
-    // Mark: Inits
+    // MARK: Inits
     
     override init(frame: CGRect) {
         super.init(frame: frame)
