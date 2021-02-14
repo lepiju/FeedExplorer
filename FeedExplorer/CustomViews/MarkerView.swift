@@ -57,6 +57,8 @@ class MarkerView: MKAnnotationView {
     
     private func setupStyling() {
         canShowCallout = true
+        displayPriority = .defaultLow
+        collisionMode = .circle
         rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
 }
