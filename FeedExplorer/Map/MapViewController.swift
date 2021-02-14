@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
     }()
     
     // MARK: Properties
-    
+    private var map: Map?
     private static var montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
     
     override func viewDidLoad() {
@@ -40,10 +40,9 @@ class MapViewController: UIViewController {
         setupViewHierarchy()
         setupConstraints()
         sharedNetworkManager.fetchMap(completionHandler: { [weak self] (map) in
-            for feed in map.feeds {
-                self?.mapView.addAnnotation(feed)
-            }
+            self?.map = map
             DispatchQueue.main.async {
+                self?.addAnnotation()
                 self?.endLoading()
             }
         })
@@ -75,6 +74,15 @@ class MapViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
+    private func addAnnotation() {
+        guard let map = self.map else {
+            return
+        }
+        for feed in map.feeds {
+            mapView.addAnnotation(feed)
+        }
+    }
+    
     private func startLoading() {
         loadingView.isHidden = false
         mapView.isScrollEnabled = false
@@ -89,6 +97,3 @@ class MapViewController: UIViewController {
         mapView.isUserInteractionEnabled = true
     }
 }
-
-
-
