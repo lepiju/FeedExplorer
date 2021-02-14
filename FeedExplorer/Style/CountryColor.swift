@@ -10,22 +10,22 @@ import UIKit
 extension UIColor {
     struct CountryColor {
         static var Canada: UIColor
-        { return UIColor(red: 244, green: 67, blue: 54, alpha: 1) }
+        { return UIColor(red: 0.957, green: 0.263, blue: 0.212, alpha: 1) }
         
         static var UnitedStates: UIColor
-        { return UIColor(red: 224, green: 64, blue: 251, alpha: 1) }
+        { return UIColor(red: 0.878, green: 0.251, blue: 0.984, alpha: 1) }
         
         static var France: UIColor
-        { return UIColor(red: 63, green: 81, blue: 181, alpha: 1) }
-
+        { return UIColor(red: 0.247, green: 0.318, blue: 0.71, alpha: 1) }
+        
         static var UnitedKingdom: UIColor
-        { return UIColor(red: 139, green: 195, blue: 74, alpha: 1) }
-
+        { return UIColor(red: 0.545, green: 0.765, blue: 0.29, alpha: 1) }
+        
         static var Germany: UIColor
-        { return UIColor(red: 255, green: 193, blue: 7, alpha: 1) }
+        { return UIColor(red: 1, green: 0.757, blue: 0.27, alpha: 1) }
         
         static var Other: UIColor
-        { return UIColor(red: 0, green: 188, blue: 212, alpha: 1) }
+        { return UIColor(red: 0, green: 0.737, blue: 0.831, alpha: 1) }
     }
 }
 
