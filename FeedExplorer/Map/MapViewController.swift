@@ -10,6 +10,8 @@ import MapKit
 
 class MapViewController: UIViewController {
     
+    private static var montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
+    
     // MARK: Views
     
     private let mapView: MKMapView = {
@@ -31,8 +33,8 @@ class MapViewController: UIViewController {
     }()
     
     // MARK: Properties
+    
     private var map: Map?
-    private static var montrealLocation = CLLocation(latitude: 45.5211167, longitude: -73.6173925)
     
     override func viewDidLoad() {
         super.viewDidLoad()

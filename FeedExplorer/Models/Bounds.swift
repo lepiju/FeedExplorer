@@ -8,15 +8,15 @@
 import Foundation
 
 struct Bounds: Codable {
-    var minLat: Double
-    var maxLat: Double
-    var minLon: Double
-    var maxLon: Double
+    var minLatitude: Double
+    var maxLatitude: Double
+    var minLongitude: Double
+    var maxLongitude: Double
     
     enum CodingKeys: String, CodingKey {
-        case minLat = "min_lat"
-        case maxLat = "max_lat"
-        case minLon = "min_lon"
-        case maxLon = "max_lon"
+        case minLatitude = "min_lat"
+        case maxLatitude = "max_lat"
+        case minLongitude = "min_lon"
+        case maxLongitude = "max_lon"
     }
 }

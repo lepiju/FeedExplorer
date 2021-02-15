@@ -39,7 +39,7 @@ class Feed: NSObject, MKAnnotation, Decodable{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.bounds = (try? container.decode(Bounds.self, forKey: .bounds)) ??
-            Bounds(minLat: 0, maxLat: 0, minLon: 0, maxLon: 0)
+            Bounds(minLatitude: 0, maxLatitude: 0, minLongitude: 0, maxLongitude: 0)
         self.title = try? container.decode(String.self, forKey: .title)
         self.subtitle = try? container.decode(String.self, forKey: .subtitle)
         
@@ -47,8 +47,8 @@ class Feed: NSObject, MKAnnotation, Decodable{
         
         self.countryCode = countryCode
         
-        let latitude = (bounds.maxLat + bounds.minLat) / 2
-        let longitude = (bounds.maxLon + bounds.minLon) / 2
+        let latitude = (bounds.maxLatitude + bounds.minLatitude) / 2
+        let longitude = (bounds.maxLongitude + bounds.minLongitude) / 2
                 
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
