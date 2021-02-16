@@ -1,5 +1,5 @@
 //
-//  AnnotationView.swift
+//  MarkerView.swift
 //  FeedExplorer
 //
 //  Created by redpanda on 2021-02-13.
